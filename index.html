@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jiong Duan</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text: #1a1a1a;
+      --muted: #888;
+      --border: #e8e8e8;
+      --bg: #fafafa;
+      --white: #fff;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* NAV */
+    header {
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .nav-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* SECTIONS */
+    section { margin-bottom: 4rem; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* HERO */
+    .hero { margin-bottom: 4rem; }
+    .hero-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+    .hero-sub {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+    .hero-desc {
+      font-size: 0.97rem;
+      color: #444;
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+    /* SOCIAL */
+    .social-row {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.4rem;
+      flex-wrap: wrap;
+    }
+    .social-row a {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .social-row a:hover { color: var(--text); text-decoration: none; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+
+    /* BIO */
+    .bio-text { font-size: 0.95rem; color: #444; line-height: 1.8; }
+    .bio-text p + p { margin-top: 1rem; }
+
+    .interests {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+    }
+    .pill {
+      font-size: 0.77rem;
+      padding: 0.28rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: #666;
+      background: var(--white);
+    }
+
+    /* EDUCATION */
+    .edu-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .edu-item { display: grid; grid-template-columns: 130px 1fr; gap: 0 1.5rem; }
+    .edu-year { font-size: 0.82rem; color: var(--muted); padding-top: 2px; }
+    .edu-degree { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.15rem; }
+    .edu-school { font-size: 0.85rem; color: var(--muted); }
+    .edu-note { font-size: 0.8rem; color: #aaa; margin-top: 0.2rem; font-style: italic; }
+
+    /* PROJECTS */
+    .project-item {
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0 2rem;
+      align-items: start;
+    }
+    .project-item:first-child { border-top: 1px solid var(--border); }
+    .project-title { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.35rem; }
+    .project-desc { font-size: 0.86rem; color: #666; line-height: 1.65; }
+    .project-tags {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      padding-top: 2px;
+    }
+    .tag {
+      font-size: 0.72rem;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.55rem;
+      border-radius: 3px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0 3rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-email a { color: var(--text); font-size: 0.86rem; }
+
+    @media (max-width: 520px) {
+      .hero-name { font-size: 2rem; }
+      .edu-item { grid-template-columns: 1fr; gap: 0.15rem; }
+      .project-item { grid-template-columns: 1fr; }
+      .project-tags { justify-content: flex-start; margin-top: 0.5rem; }
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="nav-inner">
+      <span class="nav-name">Jiong Duan</span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-name">Jiong Duan</h1>
+    <p class="hero-sub">MS Student · Computer Science &amp; Technology · Nanjing University</p>
+    <p class="hero-desc">
+      I study datacenter networking — how large-scale systems communicate faster and more reliably. Currently pursuing my Master's degree after completing my B.Eng. at NJU in 2025.
+    </p>
+    <div class="social-row">
+      <a href="https://github.com/jackmygreat" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.douyin.com/" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+        Douyin
+      </a>
+      <a href="https://www.xiaohongshu.com/" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm-1 13H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        小红书
+      </a>
+      <a href="mailto:jiongduan@example.com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        jiongduan@example.com
+      </a>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <div class="bio-text">
+      <p>I'm a graduate student at Nanjing University, where I also completed my undergraduate studies. My research focuses on datacenter networking — including congestion control, network topology, and the systems infrastructure that keeps large-scale distributed systems running efficiently.</p>
+      <p>Outside of research, I spend time playing e-games, doing street photography, and training at the gym.</p>
+    </div>
+    <div class="interests">
+      <span class="pill">E-games</span>
+      <span class="pill">Photography</span>
+      <span class="pill">Bodybuilding</span>
+      <span class="pill">Datacenter Networking</span>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">Education</p>
+    <div class="edu-list">
+      <div class="edu-item">
+        <div class="edu-year">2025 – present</div>
+        <div>
+          <div class="edu-degree">M.Eng. in Computer Science and Technology</div>
+          <div class="edu-school">Nanjing University</div>
+          <div class="edu-note">Research: datacenter networking</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2021 – 2025</div>
+        <div>
+          <div class="edu-degree">B.Eng. in Computer Science and Technology</div>
+          <div class="edu-school">Nanjing University</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Projects</p>
+    <div>
+      <div class="project-item">
+        <div>
+          <div class="project-title">Datacenter Network Simulator</div>
+          <div class="project-desc">Simulates fat-tree and Jellyfish topologies to evaluate congestion control algorithms under realistic incast traffic patterns.</div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">NS-3</span>
+        </div>
+      </div>
+      <div class="project-item">
+        <div>
+          <div class="project-title">RDMA Performance Analysis</div>
+          <div class="project-desc">Benchmarked RoCE for HPC workloads, profiling latency and throughput under various PFC and ECN configurations.</div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">C++</span>
+          <span class="tag">RDMA</span>
+        </div>
+      </div>
+      <div class="project-item">
+        <div>
+          <div class="project-title">Personal Website</div>
+          <div class="project-desc">This site — a clean static page hosted on GitHub Pages. No frameworks, just HTML and CSS.</div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-email"><a href="mailto:jiongduan@example.com">jiongduan@example.com</a></div>
+    <div>© 2026 Jiong Duan</div>
+  </footer>
+
+</div>
+</body>
+</html>
